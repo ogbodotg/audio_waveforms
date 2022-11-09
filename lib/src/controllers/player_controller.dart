@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 // TODO: Remove when fully migrated to flutter 3.3
 import 'dart:typed_data'; //ignore: unnecessary_import
 
@@ -90,7 +89,7 @@ class PlayerController extends ChangeNotifier {
   /// it completes, it prepares audio player.
   ///
   Future<void> preparePlayer(String path, [double? volume]) async {
-    path = Uri.parse(path).path;
+    // path = Uri.parse(path).path;
 
     await _readAudioFile(path);
     if ((_playerState == PlayerState.readingComplete &&
