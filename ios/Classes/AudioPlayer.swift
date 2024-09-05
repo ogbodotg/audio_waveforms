@@ -19,9 +19,11 @@ class AudioPlayer : NSObject, AVAudioPlayerDelegate {
     func preparePlayer(path: String?,volume: Double?,result:  @escaping FlutterResult){
         if(!(path ?? "").isEmpty){
             let audioUrl = URL.init(fileURLWithPath: path!)
+            print(path)
             do {
                 player = try AVAudioPlayer(contentsOf: audioUrl)
             } catch {
+                 
                 result(FlutterError(code: "", message: "Failed to prepare recording", details: nil))
             }
             
@@ -29,6 +31,7 @@ class AudioPlayer : NSObject, AVAudioPlayerDelegate {
             player?.volume = Float(volume ?? 1.0)
             result(true)
         }else {
+            print(audioUrl)
             result(FlutterError(code: Constants.audioWaveforms, message: "Audio file path can't be empty or null", details: nil))
         }
         
